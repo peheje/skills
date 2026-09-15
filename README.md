@@ -1,31 +1,51 @@
-# red-green-tdd
+# skills
 
-`red-green-tdd` is a portable Agent Skill that keeps coding agents honest about tests without turning every change into ceremony. It asks agents to prove tests have signal before treating them as coverage, then keep implementation focused and unrelated cleanup out of the cycle.
+Portable [Agent Skills](https://skills.sh/) for coding agents: Codex, Claude
+Code, Cursor, OpenCode, Pi, and other Agent Skills compatible harnesses.
 
-It is intended for Codex, Claude Code, Cursor, OpenCode, and other Agent Skills compatible harnesses.
+This repository was previously named `red-green-tdd`; old links redirect here.
+
+## Skills
+
+| skill | what it does |
+|---|---|
+| [`llm-relay`](skills/llm-relay/SKILL.md) | Coordinate two LLM agents on one repository through a file-based handoff relay with `READY_FOR_*: NNNN` markers, single-writer phases, blocking watches, and one-time handoff IDs. |
+| [`red-green-tdd`](skills/red-green-tdd/SKILL.md) | Prove tests have signal before treating them as coverage, then keep the implementation change focused. |
+| [`ubuntu-interactive-sudo`](skills/ubuntu-interactive-sudo/SKILL.md) | Use Ubuntu's graphical polkit prompt with a terminal-attached `sudo` fallback for administrator tasks. |
 
 ## Install
 
-Install the repository:
+Install the whole collection:
 
 ```sh
-npx skills add <owner>/<repo>
+npx skills add peheje/skills
 ```
 
-If your CLI supports selecting a single skill from a repository, install only this skill:
+Install a single skill:
 
 ```sh
-npx skills add <owner>/<repo> --skill red-green-tdd
+npx skills add peheje/skills --skill llm-relay
+npx skills add peheje/skills --skill red-green-tdd
+npx skills add peheje/skills --skill ubuntu-interactive-sudo
 ```
 
 ## Usage
 
-Expected usage:
-
-> When implementing behavior or fixing bugs, use the red-green-tdd skill.
-
-Tiny example prompt:
+Ask your agent to use a skill by name, for example:
 
 ```text
-Use the red-green-tdd skill to fix the validation bug in the signup form.
+Use the llm-relay skill to run a reviewer/implementer handoff on this repo.
 ```
+
+## Layout
+
+```text
+skills/
+  llm-relay/SKILL.md
+  red-green-tdd/SKILL.md
+  ubuntu-interactive-sudo/SKILL.md
+```
+
+## License
+
+MIT
